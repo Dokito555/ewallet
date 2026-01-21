@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: notification
+spec:
+  selector:
+    app: notification
+  type: NodePort
+  ports:
+    - protocol: TCP
+      name: grpc
+      port: 7004
+      targetPort: 7004 # HTTP
+      nodePort: 30005

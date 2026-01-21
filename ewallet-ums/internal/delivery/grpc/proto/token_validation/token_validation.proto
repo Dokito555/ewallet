@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package tokenvalidation;
+
+option go_package = "./token_validation.proto";
+
+// define service
+service TokenValidation {
+    // rpc method to validate token
+    rpc ValidateToken (TokenRequest) returns (TokenResponse);
+}
+
+// req contain token to validate
+message TokenRequest {
+    string token = 1;
+}
+
+// response message
+message TokenResponse {
+    string message = 1;
+    UserData data = 2;
+}
+
+// user data returned if token is valid
+message UserData {
+    int64 user_id = 1;
+    string username = 2;
+    string full_name = 3;
+    string email = 4;
+}
